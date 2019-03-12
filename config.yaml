@@ -1,0 +1,11 @@
+check-interval: 1
+timers:
+  gaming:
+    apps:
+      - retroarch
+      - minecraft
+      - atom
+    # how many minutes of usage
+    time-limit: 3
+    # within how many hours of interval
+    limit-interval: 0.1
