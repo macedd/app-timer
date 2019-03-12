@@ -4,8 +4,13 @@ timers:
     apps:
       - retroarch
       - minecraft
-      - atom
     # how many minutes of usage
-    time-limit: 3
+    time-limit: 60
     # within how many hours of interval
-    limit-interval: 0.1
+    limit-interval: 12
+  pomodoro:
+    apps:
+      - atom
+      - sublime_text
+    time-limit: 30
+    limit-interval: 45
