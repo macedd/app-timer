@@ -16,7 +16,10 @@ def shell(cmd):
 
 
 class Usage(object):
-    """Usage Storage and Control"""
+    """
+    Apps Usage Control.
+    Will store and inform about timers run time and limits.
+    """
     timer = None
     file = None
 
@@ -61,12 +64,14 @@ class Usage(object):
             return False
         usage_started = os.path.getctime(self.file)
         usage_expiry = usage_started + (limit_interval * 60 * 60)
-        print(usage_started, usage_expiry)
         return time.time() >= usage_expiry
 
 
 class Timer(object):
-    """Timer Setup and Apps Management"""
+    """
+    Apps Timer Setup.
+    Will manage a timer and proxy its configuration
+    """
     item = None
     name = None
     usage = None
@@ -110,7 +115,10 @@ class Timer(object):
 
 
 class Config(object):
-    """Config Parser"""
+    """
+    Config Parser.
+    Read and normalize the configuration objects
+    """
     data = None
     timers = None
     mtime = 0
@@ -155,13 +163,13 @@ class Config(object):
 def check_timers(config):
     '''Will check every timer setup for it's usage and limits'''
     for timer in config.timers:
-        if not timer.isRunning():
-            continue
-        print('Timer %s is running' % timer.name)
         # restore timers after interval
         if timer.usage.isOffInterval():
             print('Timer %s is off interval' % timer.name)
             timer.usage.release()
+        if not timer.isRunning():
+            continue
+        print('Timer %s is running' % timer.name)
         # check for off limit apps
         if timer.usage.isOffLimit():
             print('Timer %s is off limit' % timer.name)
