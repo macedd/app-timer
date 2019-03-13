@@ -5,12 +5,19 @@ timers:
       - retroarch
       - minecraft
     # how many minutes of usage
-    time-limit: 60
+    time-limit: 40
     # within how many hours of interval
     limit-interval: 12
+  websurf:
+    apps:
+      - chrome
+      - chromium
+      - firefox
+    time-limit: 90
+    limit-interval: 24
   pomodoro:
     apps:
       - atom
       - sublime_text
     time-limit: 30
-    limit-interval: 45
+    limit-interval: 0.7

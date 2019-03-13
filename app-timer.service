@@ -1,0 +1,13 @@
+[Unit]
+Description=App Timer Service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=/usr/bin/env python3 /opt/app-timer/timer.py
+
+[Install]
+WantedBy=multi-user.target

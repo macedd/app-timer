@@ -2,9 +2,9 @@
 
 Control apps usage time with a command line application.
 
-The python daemon will watch for the apps runtime (with `ps`) and store timing information about it's usage. It can block (`kill`) an app if the usage is off limits.
+The python daemon will watch for the apps executable and store usage time for them. It can block an app if the usage is off limits.
 
-I'm using this at a raspberry pi gaming station to enforce usage limits.
+I'm using this at a raspberry pi gaming station (retropie) to enforce usage limits. Other use cases are very plausible, like any other gaming platform or even enforcing a pomodoro timer for your coding time. Be creative and let me know.
 
 ## Config
 
@@ -30,8 +30,15 @@ timers:
 There's a systemd service file ready for use.
 
 ```bash
-  cp ./timer.service /etc/systemd/system/app-timer.service
-  systemctl enable app-timer
+  # download the sources
+  cd /opt/
+  git clone https://github.com/thiagof/app-timer
+  cd app-timer
+  # yaml dependency
+  sudo -H pip3 install -r requirements.txt
+  # setup the daemon
+  sudo cp ./app-timer.service /etc/systemd/system/app-timer.service
+  sudo systemctl enable app-timer
+  # check the service
+  sudo systemctl status app-timer
 ```
-
-Update this file to point `ExecStart` into your setup folder.
