@@ -42,3 +42,7 @@ There's a systemd service file ready for use.
   # check the service
   sudo systemctl status app-timer
 ```
+
+You must edit the file `config.yaml` for your timers setup.
+
+In the code there is some python 3 so this is required. For testing the timer and check it's outputs/configs, run `python3 timer.py`.
